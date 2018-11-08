@@ -110,6 +110,12 @@ python ./pytorch/train.py train --config_path=./configs/car.config --model_dir=/
 
 
 
+## Prediction
+
+
+
+Predict on single image and point cloud frame, should prepare into KittiDataset like object, those work still being done .
+
 
 
 ## Concepts

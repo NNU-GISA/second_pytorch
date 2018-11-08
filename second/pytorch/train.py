@@ -410,55 +410,62 @@ def _predict_kitti_to_file(net,
                            lidar_input=False):
     batch_image_shape = example['image_shape']
     batch_imgidx = example['image_idx']
+    print('input example: ', example)
     predictions_dicts = net(example)
     # t = time.time()
+    print(predictions_dicts)
     for i, preds_dict in enumerate(predictions_dicts):
-        image_shape = batch_image_shape[i]
-        img_idx = preds_dict["image_idx"]
-        if preds_dict["bbox"] is not None:
-            box_2d_preds = preds_dict["bbox"].data.cpu().numpy()
-            box_preds = preds_dict["box3d_camera"].data.cpu().numpy()
-            scores = preds_dict["scores"].data.cpu().numpy()
-            box_preds_lidar = preds_dict["box3d_lidar"].data.cpu().numpy()
-            # write pred to file
-            box_preds = box_preds[:, [0, 1, 2, 4, 5, 3,
-                                      6]]  # lhw->hwl(label file format)
-            label_preds = preds_dict["label_preds"].data.cpu().numpy()
-            # label_preds = np.zeros([box_2d_preds.shape[0]], dtype=np.int32)
-            result_lines = []
-            for box, box_lidar, bbox, score, label in zip(
-                    box_preds, box_preds_lidar, box_2d_preds, scores,
-                    label_preds):
-                if not lidar_input:
-                    if bbox[0] > image_shape[1] or bbox[1] > image_shape[0]:
-                        continue
-                    if bbox[2] < 0 or bbox[3] < 0:
-                        continue
-                # print(img_shape)
-                if center_limit_range is not None:
-                    limit_range = np.array(center_limit_range)
-                    if (np.any(box_lidar[:3] < limit_range[:3])
-                            or np.any(box_lidar[:3] > limit_range[3:])):
-                        continue
-                bbox[2:] = np.minimum(bbox[2:], image_shape[::-1])
-                bbox[:2] = np.maximum(bbox[:2], [0, 0])
-                result_dict = {
-                    'name': class_names[int(label)],
-                    'alpha': -np.arctan2(-box_lidar[1], box_lidar[0]) + box[6],
-                    'bbox': bbox,
-                    'location': box[:3],
-                    'dimensions': box[3:6],
-                    'rotation_y': box[6],
-                    'score': score,
-                }
-                result_line = kitti.kitti_result_line(result_dict)
-                result_lines.append(result_line)
-        else:
-            result_lines = []
-        result_file = f"{result_save_path}/{kitti.get_image_index_str(img_idx)}.txt"
-        result_str = '\n'.join(result_lines)
-        with open(result_file, 'w') as f:
-            f.write(result_str)
+        try:
+            image_shape = batch_image_shape[i]
+            img_idx = preds_dict["image_idx"]
+            if preds_dict["bbox"] is not None:
+                box_2d_preds = preds_dict["bbox"].data.cpu().numpy()
+                box_preds = preds_dict["box3d_camera"].data.cpu().numpy()
+                scores = preds_dict["scores"].data.cpu().numpy()
+                box_preds_lidar = preds_dict["box3d_lidar"].data.cpu().numpy()
+                # write pred to file
+                box_preds = box_preds[:, [0, 1, 2, 4, 5, 3,
+                                          6]]  # lhw->hwl(label file format)
+                label_preds = preds_dict["label_preds"].data.cpu().numpy()
+                # label_preds = np.zeros([box_2d_preds.shape[0]], dtype=np.int32)
+                result_lines = []
+                for box, box_lidar, bbox, score, label in zip(
+                        box_preds, box_preds_lidar, box_2d_preds, scores,
+                        label_preds):
+                    if not lidar_input:
+                        if bbox[0] > image_shape[1] or bbox[1] > image_shape[0]:
+                            continue
+                        if bbox[2] < 0 or bbox[3] < 0:
+                            continue
+                    # print(img_shape)
+                    if center_limit_range is not None:
+                        limit_range = np.array(center_limit_range)
+                        if (np.any(box_lidar[:3] < limit_range[:3])
+                                or np.any(box_lidar[:3] > limit_range[3:])):
+                            continue
+                    bbox[2:] = np.minimum(bbox[2:], image_shape[::-1])
+                    bbox[:2] = np.maximum(bbox[:2], [0, 0])
+                    result_dict = {
+                        'name': class_names[int(label)],
+                        'alpha': -np.arctan2(-box_lidar[1], box_lidar[0]) + box[6],
+                        'bbox': bbox,
+                        'location': box[:3],
+                        'dimensions': box[3:6],
+                        'rotation_y': box[6],
+                        'score': score,
+                    }
+                    result_line = kitti.kitti_result_line(result_dict)
+                    result_lines.append(result_line)
+            else:
+                result_lines = []
+            result_file = f"{result_save_path}/{kitti.get_image_index_str(img_idx)}.txt"
+            result_str = '\n'.join(result_lines)
+            print('saved into: ', result_file)
+            with open(result_file, 'w') as f:
+                f.write(result_str)
+        except Exception as e:
+            print(e)
+            continue
 
 
 def predict_kitti_to_anno(net,
@@ -539,7 +546,7 @@ def evaluate(config_path,
              predict_test=False,
              ckpt_path=None,
              ref_detfile=None,
-             pickle_result=True):
+             pickle_result=False):
     model_dir = pathlib.Path(model_dir)
     if predict_test:
         result_name = 'predict_test'
@@ -607,8 +614,6 @@ def evaluate(config_path,
     dt_annos = []
     global_set = None
     print("Generate output labels...")
-    bar = ProgressBar()
-    bar.start(len(eval_dataset) // input_cfg.batch_size + 1)
 
     for example in iter(eval_dataloader):
         example = example_convert_to_torch(example, float_dtype)
@@ -617,9 +622,9 @@ def evaluate(config_path,
                 net, example, class_names, center_limit_range,
                 model_cfg.lidar_input, global_set)
         else:
+            print('Predicting on one example...')
             _predict_kitti_to_file(net, example, result_path_step, class_names,
                                    center_limit_range, model_cfg.lidar_input)
-        bar.print_bar()
 
     sec_per_example = len(eval_dataset) / (time.time() - t)
     print(f'generate label finished({sec_per_example:.2f}/s). start eval:')
