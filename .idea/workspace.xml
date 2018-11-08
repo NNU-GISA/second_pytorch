@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80a7a133-b71a-4df6-a6df-3ae9335869f2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/predict.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/second.pytorch.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/second/configs/car.config" beforeDir="false" afterPath="$PROJECT_DIR$/second/configs/car.config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/second/pytorch/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/second/pytorch/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/predict.py" beforeDir="false" afterPath="$PROJECT_DIR$/predict.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/second/data/preprocess.py" beforeDir="false" afterPath="$PROJECT_DIR$/second/data/preprocess.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,6 +15,7 @@
     <session id="-1076679590">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
@@ -29,23 +24,23 @@
         <counts>
           <entry key="config" value="2" />
           <entry key="proto" value="1" />
-          <entry key="py" value="9" />
+          <entry key="py" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="PLAIN_TEXT" value="3" />
-          <entry key="Python" value="9" />
+          <entry key="Python" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="245" />
+          <entry key="py" value="1547" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="245" />
+          <entry key="Python" value="1547" />
         </counts>
       </usages-collector>
     </session>
@@ -55,8 +50,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/second/pytorch/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="807">
-              <caret line="467" column="20" lean-forward="true" selection-start-line="404" selection-end-line="467" selection-end-column="20" />
+            <state relative-caret-position="753">
+              <caret line="125" column="72" lean-forward="true" selection-start-line="123" selection-start-column="4" selection-end-line="125" selection-end-column="72" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -67,32 +62,15 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/predict.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="507">
-              <caret line="45" column="9" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
+            <state relative-caret-position="897">
+              <caret line="232" column="11" lean-forward="true" selection-start-line="232" selection-start-column="11" selection-end-line="232" selection-end-column="11" />
               <folding>
-                <element signature="e#70#79#0" expanded="true" />
+                <element signature="e#69#78#0" expanded="true" />
+                <marker date="1541660267807" expanded="true" signature="1203:9613" ph="..." />
+                <marker date="1541660267807" expanded="true" signature="3680:7288" ph="..." />
+                <marker date="1541660267807" expanded="true" signature="7315:7324" ph="..." />
+                <marker date="1541660267807" expanded="true" signature="9727:9987" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/second/pytorch/builder/input_reader_builder.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="942">
-              <caret line="68" column="32" lean-forward="true" selection-start-line="68" selection-start-column="32" selection-end-line="68" selection-end-column="32" />
-              <folding>
-                <element signature="e#1011#1047#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/second/builder/dataset_builder.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="867">
-              <caret line="101" column="20" lean-forward="true" selection-start-line="101" selection-start-column="20" selection-end-line="101" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -100,8 +78,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/second/data/dataset.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="927">
-              <caret line="63" column="26" selection-start-line="63" selection-start-column="26" selection-end-line="63" selection-end-column="26" />
+            <state relative-caret-position="105">
+              <caret line="7" column="30" selection-start-line="7" selection-end-line="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/second/data/preprocess.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-468">
+              <caret line="301" column="4" selection-start-line="301" selection-start-column="4" selection-end-line="301" selection-end-column="4" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -110,10 +97,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/second/data/preprocess.py">
+        <entry file="file://$PROJECT_DIR$/second/pytorch/builder/input_reader_builder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="672">
-              <caret line="334" column="34" lean-forward="true" selection-start-line="334" selection-start-column="34" selection-end-line="334" selection-end-column="34" />
+            <state relative-caret-position="375">
+              <caret line="25" selection-start-line="25" selection-end-line="27" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/second/builder/dataset_builder.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="24" selection-start-line="24" selection-end-line="29" selection-end-column="29" />
+              <folding>
+                <element signature="e#1011#1053#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -162,6 +161,13 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>save_checkpoints_secs</find>
@@ -176,6 +182,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/second/pytorch/train.py" />
+        <option value="$PROJECT_DIR$/second/data/preprocess.py" />
         <option value="$PROJECT_DIR$/predict.py" />
       </list>
     </option>
@@ -187,8 +194,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1008" />
-    <option name="y" value="166" />
+    <option name="x" value="520" />
+    <option name="y" value="100" />
     <option name="width" value="1213" />
     <option name="height" value="1274" />
   </component>
@@ -204,6 +211,17 @@
             <path>
               <item name="second_pytorch" type="b2602c69:ProjectViewProjectNode" />
               <item name="second_pytorch" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="second_pytorch" type="b2602c69:ProjectViewProjectNode" />
+              <item name="second_pytorch" type="462c0819:PsiDirectoryNode" />
+              <item name="second" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="second_pytorch" type="b2602c69:ProjectViewProjectNode" />
+              <item name="second_pytorch" type="462c0819:PsiDirectoryNode" />
+              <item name="second" type="462c0819:PsiDirectoryNode" />
+              <item name="pytorch" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="second_pytorch" type="b2602c69:ProjectViewProjectNode" />
@@ -247,7 +265,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1008" y="166" width="1213" height="1274" extended-state="0" />
+    <frame x="520" y="100" width="1213" height="1274" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24935733" />
@@ -310,40 +329,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/second/pytorch/builder/input_reader_builder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="942">
-          <caret line="68" column="32" lean-forward="true" selection-start-line="68" selection-start-column="32" selection-end-line="68" selection-end-column="32" />
-          <folding>
-            <element signature="e#1011#1047#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/second/builder/dataset_builder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="101" column="20" lean-forward="true" selection-start-line="101" selection-start-column="20" selection-end-line="101" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/second/data/dataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="927">
-          <caret line="63" column="26" selection-start-line="63" selection-start-column="26" selection-end-line="63" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/second/data/preprocess.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="334" column="34" lean-forward="true" selection-start-line="334" selection-start-column="34" selection-end-line="334" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/second/create_data.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
@@ -354,22 +339,60 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/second/pytorch/builder/input_reader_builder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" selection-start-line="25" selection-end-line="27" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/second/builder/dataset_builder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="24" selection-start-line="24" selection-end-line="29" selection-end-column="29" />
+          <folding>
+            <element signature="e#1011#1053#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/second/pytorch/train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="807">
-          <caret line="467" column="20" lean-forward="true" selection-start-line="404" selection-end-line="467" selection-end-column="20" />
+        <state relative-caret-position="753">
+          <caret line="125" column="72" lean-forward="true" selection-start-line="123" selection-start-column="4" selection-end-line="125" selection-end-column="72" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/second/data/preprocess.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-468">
+          <caret line="301" column="4" selection-start-line="301" selection-start-column="4" selection-end-line="301" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/second/data/dataset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="30" selection-start-line="7" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/predict.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="45" column="9" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
+        <state relative-caret-position="897">
+          <caret line="232" column="11" lean-forward="true" selection-start-line="232" selection-start-column="11" selection-end-line="232" selection-end-column="11" />
           <folding>
-            <element signature="e#70#79#0" expanded="true" />
+            <element signature="e#69#78#0" expanded="true" />
+            <marker date="1541660267807" expanded="true" signature="1203:9613" ph="..." />
+            <marker date="1541660267807" expanded="true" signature="3680:7288" ph="..." />
+            <marker date="1541660267807" expanded="true" signature="7315:7324" ph="..." />
+            <marker date="1541660267807" expanded="true" signature="9727:9987" ph="..." />
           </folding>
         </state>
       </provider>

@@ -354,3 +354,46 @@ def _read_and_prep_v9(info, root_path, num_point_features, prep_func):
         example["anchors_mask"] = example["anchors_mask"].astype(np.uint8)
     return example
 
+
+def prepare_v9_for_predict(img, points, num_pc_features, r0_rect, tr_velo_2_cam, p2,  prep_func):
+    """
+    construct an example for predict
+
+    what you should provide, simply img, points, and extrinsic and intrinsic both lidar and camera
+
+    :param img:
+    :param points:
+    :param num_pc_features:
+    :param r0_rect:
+    :param tr_velo_2_cam:
+    :param p2:
+    :param prep_func:
+    :return:
+    """
+    # points = np.fromfile(
+    #     str(v_path), dtype=np.float32,
+    #     count=-1).reshape([-1, num_point_features])
+
+    image_idx = '404'
+    rect = r0_rect
+    Trv2c = tr_velo_2_cam
+    P2 = p2
+
+    input_dict = {
+        'points': points,
+        'rect': rect,
+        'Trv2c': Trv2c,
+        'P2': P2,
+        'image_shape': img.shape,
+        'image_idx': image_idx,
+        'image_path': 'predict/img.jpg',
+        # 'pointcloud_num_features': num_point_features,
+    }
+
+    example = prep_func(input_dict=input_dict)
+    example["image_idx"] = image_idx
+    example["image_shape"] = input_dict["image_shape"]
+    if "anchors_mask" in example:
+        example["anchors_mask"] = example["anchors_mask"].astype(np.uint8)
+    return example
+
