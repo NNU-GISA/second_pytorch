@@ -229,6 +229,7 @@ def main():
 
     second_3d_detector = Second3DDetector(model_dir='./models', config_f='./second/configs/car.config')
 
+    # TODO: finish this
     img = ''
     pc = ''
     example = second_3d_detector.construct_example_for_predict()
