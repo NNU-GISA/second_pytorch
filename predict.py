@@ -36,6 +36,8 @@ from second.builder import dbsampler_builder
 from functools import partial
 from second.core import box_np_ops
 
+from calibration_consts import calib_p2, tr_velodyne_to_cam, r0_rect
+import cv2
 
 class_names = ['Car']
 
@@ -230,12 +232,24 @@ def main():
     second_3d_detector = Second3DDetector(model_dir='./models', config_f='./second/configs/car.config')
 
     # TODO: finish this
-    img = ''
-    pc = ''
-    example = second_3d_detector.construct_example_for_predict()
+    root_dir = '/media/jintain/sg/permanent/datasets/KITTI/videos/2011_09_26/2011_09_26_drive_0048_sync/'
+    img = os.path.join(root_dir, 'image_02/data/0000000000.png')
+    pc = os.path.join(root_dir, 'velodyne_points/data/0000000000.bin')
+
+    img = cv2.imread(img, cv2.IMREAD_COLOR)
+    points = np.fromfile(pc, dtype=np.float32, count=-1).reshape([-1, second_3d_detector.model_cfg.num_point_features])
+
+    example = second_3d_detector.construct_example_for_predict(
+        img=img,
+        pc=points,
+        rect=r0_rect,
+        tr=tr_velodyne_to_cam,
+        p2=calib_p2
+    )
+    print('input example: ', example)
     res = second_3d_detector.predict(example)
     print(res)
 
 
 if __name__ == '__main__':
-    pass
+    main()
